@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Countdown Timer">
-  <test thread-count="5" name="Timer Validation">
-  </test> <!-- Timer Validation -->
+	<parameter name="browserType" value="chrome" />
+	<test thread-count="5" name="Timer Validation">
+		<classes>
+			<class name="app.tests.TimerTest" />
+		</classes>
+	</test> <!-- Timer Validation -->
 </suite> <!-- Countdown Timer -->
