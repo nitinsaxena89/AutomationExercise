@@ -28,6 +28,10 @@ public class HomePage extends PageBase {
 		clickStart();
 		return new CountdownPage(driver);
 	}
+	
+	public boolean isLoaded() {
+		return jsExecutor.executeScript("return document.readyState").toString().equals("complete");
+	}
 
 	private void fillTime(String TimeDuration) {
 		wait.until(ExpectedConditions.visibilityOf(txtStartTime));

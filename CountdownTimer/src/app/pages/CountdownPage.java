@@ -1,12 +1,16 @@
 package app.pages;
 
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import app.framework.PageBase;
+import app.helpers.Constants;
 
 public class CountdownPage extends PageBase {
 
@@ -21,4 +25,15 @@ public class CountdownPage extends PageBase {
 	public String getCountdownValue() {
 		return dynLblTimer.getText();
 	}
+
+	public boolean isCountdownRunning(String CurrentTime) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Constants.COUNTDOWN_INTERVAL_SECONDS);
+			wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(dynLblTimer, CurrentTime)));
+			return true;
+		} catch (UnhandledAlertException e) {
+			return false;
+		}
+	}
+
 }
