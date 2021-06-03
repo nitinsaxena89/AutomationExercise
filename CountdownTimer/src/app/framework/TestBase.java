@@ -2,8 +2,10 @@ package app.framework;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -53,7 +55,11 @@ public class TestBase {
 
 	private WebDriver initializeChromeDriver() {
 		System.setProperty("webdriver.chrome.driver", config.get("CHROME_DRIVER_PATH"));
-		driver = new ChromeDriver();
+
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+
+		driver = new ChromeDriver(chromeOptions);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_WAIT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
 		driver.get(config.get("BASE_URL"));

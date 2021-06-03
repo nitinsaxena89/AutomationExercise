@@ -6,8 +6,10 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import app.framework.PageBase;
+import app.helpers.Constants;
 
 public class HomePage extends PageBase {
 
@@ -30,7 +32,8 @@ public class HomePage extends PageBase {
 	}
 	
 	public boolean isLoaded() {
-		return jsExecutor.executeScript("return document.readyState").toString().equals("complete");
+		WebDriverWait pageLoadWait = new WebDriverWait(driver, Constants.PAGE_LOAD_TIMEOUT_SECONDS);
+		return pageLoadWait.until(driver -> isPageLoadStateComplete());
 	}
 
 	private void fillTime(String TimeDuration) {
@@ -41,5 +44,9 @@ public class HomePage extends PageBase {
 	private void clickStart() {
 		wait.until(ExpectedConditions.visibilityOf(btnStartTimer));
 		btnStartTimer.click();
+	}
+
+	private boolean isPageLoadStateComplete() {
+		return jsExecutor.executeScript("return document.readyState").toString().equals("complete");
 	}
 }

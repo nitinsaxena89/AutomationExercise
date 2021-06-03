@@ -21,6 +21,7 @@ public class TimerTest extends TestBase {
 		CountdownPage countdownPage = homePage.startCountdown(timeDuration);
 
 		// Assert
+		Assert.assertTrue(countdownPage.isLoaded(), "Verify Countdown timer is displayed.");
 		Assert.assertEquals(countdownPage.getCountdownValue(), timeDuration,
 				"Verify Countdown started from time duration provided i.e" + timeDuration);
 
@@ -32,9 +33,12 @@ public class TimerTest extends TestBase {
 			Assert.assertEquals(countdownPage.getCountdownValue(), currentTime,
 					"Verify Countdown at second: " + currentTime);
 		}
-		
+
 		Assert.assertEquals(countdownPage.getCountdownValue(), "Time Expired!",
 				"Verify Time Expired is displayed after Countdown Ends");
+		if (countdownPage.alertPresent()) {
+			countdownPage.acceptTimeoutAlert();
+		}
 	}
 
 }
