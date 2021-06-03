@@ -36,6 +36,10 @@ public class TestBase {
 		driver.quit();
 	}
 
+	public WebDriver getDriver() {
+		return driver;
+	}
+
 	private void createDriver(String BrowserType) {
 		switch (BrowserType.toLowerCase()) {
 		case "chrome": {

@@ -13,7 +13,7 @@ public class PropertyReader {
 			FileInputStream fileInputStream = new FileInputStream(PropertyFilePath);
 
 			properties = new Properties();
-			properties.load(fileInputStream);
+			properties.load(fileInputStream);	
 
 			fileInputStream.close();
 
