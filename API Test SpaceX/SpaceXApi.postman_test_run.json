@@ -1,0 +1,61 @@
+{
+	"id": "6e2845eb-9e30-433b-99bc-3c3250263c43",
+	"name": "SpaceXApi",
+	"timestamp": "2021-06-03T16:14:42.593Z",
+	"collection_id": "54452a38-3dd3-4261-8ce5-2d5ad64fe042",
+	"folder_id": 0,
+	"environment_id": "c97969b7-5e2b-4178-8de5-7cc7bed30bf8",
+	"totalPass": 3,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "38878fd3-f993-4f2e-9bfc-140bd786d17e",
+			"name": "Latest Launches End Point",
+			"url": "https://api.spacexdata.com/v4/launches/latest",
+			"time": 250,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Validate Schema": true,
+				"SpaceX Launch is Success without Failures": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate Schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"SpaceX Launch is Success without Failures": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				250
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Validate Schema": true,
+					"SpaceX Launch is Success without Failures": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 250,
+	"collection": {
+		"requests": [
+			{
+				"id": "38878fd3-f993-4f2e-9bfc-140bd786d17e",
+				"method": "GET"
+			}
+		]
+	}
+}

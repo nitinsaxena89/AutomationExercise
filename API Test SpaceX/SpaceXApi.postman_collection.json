@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "54452a38-3dd3-4261-8ce5-2d5ad64fe042",
+		"name": "SpaceXApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Latest Launches End Point",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate Schema\", function () {    \r",
+							"    console.log(pm.environment.get('schema'));\r",
+							"    pm.response.to.have.jsonSchema(JSON.parse(pm.environment.get(\"schema\")));\r",
+							"});\r",
+							"\r",
+							"//Get Json Response\r",
+							"var responseJson = pm.response.json();\r",
+							"\r",
+							"pm.test(\"SpaceX Launch is Success without Failures\", function () {\r",
+							"    pm.expect(responseJson.success).to.eql(true);\r",
+							"    pm.expect(responseJson.failures).to.be.an('array').that.is.empty;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spacexdata.com/v4/launches/latest",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spacexdata",
+						"com"
+					],
+					"path": [
+						"v4",
+						"launches",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

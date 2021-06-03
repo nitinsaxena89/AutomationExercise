@@ -1,0 +1,5 @@
+Took Schema from Github API Documentation:
+https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/README.md#launches---schema
+
+Schema : 
+https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/launches/latest.md

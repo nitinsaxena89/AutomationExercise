@@ -1,0 +1,11 @@
+Other Scenarios:
+
+Test Response Time of EndPoint
+Test Json Response Body Based on business Requirement for different properties like:
+	1. Test if Crew is Empty
+	2. Test Ships, Capsules, Payloads
+	3. Test Flight Number
+	4. Test cores-> landing_attempt=true, landing_success = true
+	5. Test Links in response are valid and accessible(200)
+
+	
